@@ -1,0 +1,133 @@
+[
+    {
+        "ID": "wnboksdoutvtel4gid3xgj3gw",
+        "Version": {
+            "Index": 9494
+        },
+        "CreatedAt": "2024-09-10T19:16:44.3045842Z",
+        "UpdatedAt": "2024-09-10T19:16:44.3061116Z",
+        "Spec": {
+            "Name": "ws_test-server",
+            "Labels": {
+                "com.docker.stack.image": "docker-ws:1.0",
+                "com.docker.stack.namespace": "ws"
+            },
+            "TaskTemplate": {
+                "ContainerSpec": {
+                    "Image": "docker-ws:1.0",
+                    "Labels": {
+                        "com.docker.stack.namespace": "ws"
+                    },
+                    "Args": [
+                        "node",
+                        "--inspect=3005",
+                        "server.js"
+                    ],
+                    "Privileges": {
+                        "CredentialSpec": null,
+                        "SELinuxContext": null
+                    },
+                    "StopGracePeriod": 10000000000,
+                    "DNSConfig": {},
+                    "Isolation": "default"
+                },
+                "Resources": {},
+                "RestartPolicy": {
+                    "Condition": "any",
+                    "Delay": 5000000000,
+                    "MaxAttempts": 0
+                },
+                "Placement": {},
+                "Networks": [
+                    {
+                        "Target": "t4ipsyi7u7u3pejm71jkwotdn",
+                        "Aliases": [
+                            "test-server"
+                        ]
+                    }
+                ],
+                "ForceUpdate": 0,
+                "Runtime": "container"
+            },
+            "Mode": {
+                "Replicated": {
+                    "Replicas": 1
+                }
+            },
+            "UpdateConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "Monitor": 5000000000,
+                "MaxFailureRatio": 0,
+                "Order": "stop-first"
+            },
+            "RollbackConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "Monitor": 5000000000,
+                "MaxFailureRatio": 0,
+                "Order": "stop-first"
+            },
+            "EndpointSpec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 8123,
+                        "PublishedPort": 3006,
+                        "PublishMode": "ingress"
+                    },
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 3005,
+                        "PublishedPort": 3007,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            }
+        },
+        "Endpoint": {
+            "Spec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 8123,
+                        "PublishedPort": 3006,
+                        "PublishMode": "ingress"
+                    },
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 3005,
+                        "PublishedPort": 3007,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            },
+            "Ports": [
+                {
+                    "Protocol": "tcp",
+                    "TargetPort": 8123,
+                    "PublishedPort": 3006,
+                    "PublishMode": "ingress"
+                },
+                {
+                    "Protocol": "tcp",
+                    "TargetPort": 3005,
+                    "PublishedPort": 3007,
+                    "PublishMode": "ingress"
+                }
+            ],
+            "VirtualIPs": [
+                {
+                    "NetworkID": "0msror99cvuc89gid7bl02m6t",
+                    "Addr": "10.255.0.92/16"
+                },
+                {
+                    "NetworkID": "t4ipsyi7u7u3pejm71jkwotdn",
+                    "Addr": "10.0.2.2/24"
+                }
+            ]
+        }
+    }
+]
