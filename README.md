@@ -13,3 +13,6 @@ services:
       - 3006:8123
       - 3007:3005
 ```
+
+> Note: Adding =0.0.0.0 opens up the debugger to connections from any IP.
+https://nodejs.org/en/learn/getting-started/debugging#command-line-options
